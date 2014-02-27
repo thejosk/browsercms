@@ -10,7 +10,7 @@ require 'compass-rails'
 # Gem name is different than file name
 # Must be required FIRST, so that our assets paths appear before its do.
 # This allows app/assets/ckeditor/config.js to set CMS specific defaults.
-require 'ckeditor-rails'
+#require 'ckeditor-rails'
 
 # Explicitly require this, so that CMS projects do not need to add it to their Gemfile
 # especially while upgrading
