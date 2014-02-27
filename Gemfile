@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-ruby '2.0.0'
+ruby '2.1.0'
 
 # Load this project as a gem.
 gemspec
@@ -19,7 +19,7 @@ end
 
 group :development do
   gem 'rake'
-  gem 'debugger'
+  #gem 'debugger'
   gem 'quiet_assets'
 end
 group :test, :development do
