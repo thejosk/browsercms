@@ -3,14 +3,14 @@
 // Need to style 'EDIT'/Pencil button so it floats right and over elements for a content block
 // Need to style 'PLUS' so it fits in the center of a space.
 .cms-container {
-  border: 1px solid #c0c0c0;
+  border: 1px dashed #000;
   margin: 15px 0;
   min-height: 100px;
 }
 
 .cms-container:hover {
-  border-style: dashed;
-  border-color: #000;
+  border-width: 2px;
+  border-color: blue;
 }
 
 .cms-add-content {
