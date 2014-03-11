@@ -14,5 +14,8 @@
 //= require cms/form_builder
 //= require cms/sitemap
 //= require bootstrap
-//
+//= require vendor/angular
+//= require vendor/angular-sortable
+//= require ../angular/browsercms
+//= require_tree ../angular
 
