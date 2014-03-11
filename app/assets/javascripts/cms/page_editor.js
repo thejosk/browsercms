@@ -12,7 +12,6 @@ jQuery(function($){
 });
 
 jQuery(function($){
-  window.editor = CKEDITOR.currentInstance;
   $.cms_editor = {
     // Returns the widget that a user has currently selected.
     // @return [JQuery.Element]
