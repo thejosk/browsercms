@@ -566,10 +566,10 @@ module Cms
     end
 
     test "Creating a new block to a page should update all existing connectors to the new page version." do
-      Rails.logger.warn "Creating a new connector"
+      Rails.logger.info "Creating a new connector"
       @page.create_connector(create(:html_block), "main")
       expected_version = 3
-      Rails.logger.warn "Done"
+      Rails.logger.info "Done"
       connectors = @page.connectors.for_page_version(expected_version)
       assert_equal expected_version, connectors[0].page_version, "There should be two connectors with the same version as the page"
       assert_equal expected_version, connectors[1].page_version
