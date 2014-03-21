@@ -294,7 +294,7 @@ module Cms
         #
         # ActiveRecord Callback
         def save_associated_attachments
-          logger.warn "save_associated_attachments #{attachments}"
+          logger.info "save_associated_attachments #{attachments}"
           attachments.each do |a|
             a.save if a.changed?
           end

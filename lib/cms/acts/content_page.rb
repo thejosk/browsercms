@@ -52,7 +52,7 @@ module Cms
       # Before filter that determines if the current user can access a specific section.
       def check_access_to_section
         user = current_user
-        logger.warn "Checking that current_user '#{user.login}' has access to view section with path '#{self.class.in_section}'."
+        logger.info "Checking that current_user '#{user.login}' has access to view section with path '#{self.class.in_section}'."
         unless user.able_to_view?(self.class.in_section)
           store_location
           raise Cms::Errors::AccessDenied
@@ -75,7 +75,7 @@ module Cms
         #   ...
         #
         def requires_permission_for_section(path, options={})
-          logger.warn "Setting path #{path}"
+          logger.info "Setting path #{path}"
           @section_path = path
           before_filter :check_access_to_section, options
         end
