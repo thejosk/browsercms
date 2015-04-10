@@ -11,7 +11,7 @@
 # Minor Issue:
 #   Error handling for Page not found behaves slightly differently than ContentController currently. If the user is logged
 #   in as an editor, they will get a 500 page rather than 404. This would require reworking how the error processing
-#   works in Cms::ContentRenderingSupport. 
+#   works in Cms::ContentRenderingSupport.
 module Cms
   module Acts
 
@@ -22,7 +22,7 @@ module Cms
       def cms_toolbar
         ""
       end
-      
+
       # If we are showing an error page, use that. Otherwise, just a blank page object that has a default title.
       def current_page
         super ? super : OpenStruct.new(page_title: controller.class.name.gsub("Controller", ""))
@@ -33,6 +33,7 @@ module Cms
       def self.included(base)
         base.send :include, Cms::ContentRenderingSupport
         base.send :include, Cms::Authentication::Controller
+        base.send :include, Cms::DomainSupport
         base.extend ClassMethods
 
         base.helper Cms::PageHelper
