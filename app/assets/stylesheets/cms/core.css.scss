@@ -1,4 +1,11 @@
 /* COLORS & MIX-INS */
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
 @mixin breakpoint($point) {
 	@if $point == large {
 		@media only screen and (min-width : 1401px) { @content; }

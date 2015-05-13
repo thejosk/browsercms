@@ -1,11 +1,6 @@
 @charset "utf-8";
 
 $experimental-support-for-khtml: false;
-@import "compass/reset";
-@import "compass/css3";
-@import "compass/typography";
-@import "compass/css3/box";
-
 // Basic items for making modals work
 @import "bootstrap/mixins";
 @import "bootstrap/variables";

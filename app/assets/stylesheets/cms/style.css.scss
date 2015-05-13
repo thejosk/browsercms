@@ -1,14 +1,8 @@
 @charset "utf-8";
 
 $experimental-support-for-khtml: false;
-@import "compass/reset";
-@import "compass/css3";
-@import "compass/typography";
-@import "compass/css3/box";
-
 @import "includes/_rem.scss";
 @import "includes/_animation.scss";
-
 
 /* COLORS & MIX-INS */
 @mixin breakpoint($point) {
