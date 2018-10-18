@@ -77,7 +77,7 @@ Cms::Engine.routes.draw do
     end
   end
 
-  resources :attachments, :only => [:show, :create, :destroy]
+  resources :attachments, :only => [:new, :show, :create, :destroy]
 
   content_blocks :html_blocks
   content_blocks :forms
@@ -94,7 +94,7 @@ Cms::Engine.routes.draw do
       post :submit
     end
   end
-
+  put "/form_entries" => "form_entries#bulk_update"
   # Faux nested resource for forms (not sure if #content_blocks allows for it.)
   get 'forms/:id/entries' => 'form_entries#index', as: 'entries'
 
