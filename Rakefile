@@ -1,5 +1,6 @@
 #!/usr/bin/env rake
 begin
+  $arel_silence_type_casting_deprecation=true
   require 'bundler/setup'
 rescue LoadError
   puts 'You must `gem install bundler` and `bundle install` to run rake tasks'
@@ -19,18 +20,21 @@ load 'rails/tasks/engine.rake'
 Bundler::GemHelper.install_tasks
 
 require 'rake/testtask'
+require 'single_test/tasks'
 
 Rake::TestTask.new('units') do |t|
   t.libs << 'lib'
   t.libs << 'test'
   t.pattern = 'test/unit/**/*_test.rb'
   t.verbose = false
+  t.warning = false
 end
 
 Rake::TestTask.new('spec') do |t|
   t.libs << 'lib'
   t.libs << 'spec'
   t.pattern = "spec/**/*_spec.rb"
+  t.warning = false
 end
 
 Rake::TestTask.new('test:functionals' => ['project:ensure_db_exists', 'app:test:prepare']) do |t|
@@ -38,7 +42,7 @@ Rake::TestTask.new('test:functionals' => ['project:ensure_db_exists', 'app:test:
   t.libs << 'test'
   t.pattern = 'test/functional/**/*_test.rb'
   t.verbose = false
-
+  t.warning = false
 end
 
 require 'cucumber'
@@ -80,7 +84,7 @@ end
 
 desc 'Runs all the tests, specs and scenarios.'
 task :test => ['project:ensure_db_exists', 'app:test:prepare'] do
-  tests_to_run = ENV['TEST'] ? ["test:single"] : %w(test:units spec test:functionals features)
+  tests_to_run =  %w(test:units spec test:functionals features)
   run_tests(tests_to_run)
 end
 
@@ -101,7 +105,7 @@ def run_tests(tests_to_run)
 end
 
 # Build and run against MySQL.
-task 'ci:test' => ['project:setup:mysql', 'db:drop', 'db:create:all', 'db:install', 'test']
+task 'ci:test' => [ 'project:setup:mysql', 'db:drop', 'db:create:all', 'db:install', 'test']
 task :default => 'ci:test'
 
 require 'yard'
