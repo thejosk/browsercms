@@ -2,7 +2,7 @@
 require 'rails'
 require 'cms/configuration'
 require 'cms/version'
-require 'browsercms'
+#require 'browsercms'
 
 require 'bootstrap-sass'
 # Gem name is different than file name

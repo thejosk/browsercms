@@ -21,7 +21,6 @@ module Cms
       assert !section.valid?
       assert_has_error_on section, :name, "cannot contain '/'"
     end
-
     test "sections return all child sections of a section" do
       s = create(:public_section)
       assert_equal [s], s.parent.sections
@@ -144,6 +143,13 @@ module Cms
       assert @section.destroy
       assert_decremented section_count, Cms::Section.count
       assert_decremented section_node_count, Cms::SectionNode.count
+    end
+
+    test "Homepage should not be #deletable?" do
+      home = build(:page)
+      home.path = "/"
+
+      refute home.section_node.deletable?, "Should not be able to delete the homepage as this will cause problems for sites."
     end
 
     def test_creating_page_with_reserved_path

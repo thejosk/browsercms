@@ -370,13 +370,19 @@ class Cms::Page < ActiveRecord::Base
   end
 
   def name_with_section_path
-    a = ancestors
-    (a[1..a.size].map { |a| a.name } + [name]).join(" / ")
+    anc = ancestors
+    (anc[1..anc.size].map { |a| a.name } + [name]).join(" / ")
   end
 
   # @return [Boolean] true if this page is the home page of the site.
   def home?
     path == "/"
+  end
+
+
+  # @return [Boolean] true if this page can be deleted or not.
+  def deletable?
+    !home?
   end
 
   # This will return the "top level section" for this page, which is the section directly

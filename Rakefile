@@ -19,18 +19,21 @@ load 'rails/tasks/engine.rake'
 Bundler::GemHelper.install_tasks
 
 require 'rake/testtask'
+require 'single_test/tasks'
 
 Rake::TestTask.new('units') do |t|
   t.libs << 'lib'
   t.libs << 'test'
   t.pattern = 'test/unit/**/*_test.rb'
   t.verbose = false
+  t.warning = false
 end
 
 Rake::TestTask.new('spec') do |t|
   t.libs << 'lib'
   t.libs << 'spec'
   t.pattern = "spec/**/*_spec.rb"
+  t.warning = false
 end
 
 Rake::TestTask.new('test:functionals' => ['project:ensure_db_exists', 'app:test:prepare']) do |t|
@@ -38,7 +41,7 @@ Rake::TestTask.new('test:functionals' => ['project:ensure_db_exists', 'app:test:
   t.libs << 'test'
   t.pattern = 'test/functional/**/*_test.rb'
   t.verbose = false
-
+  t.warning = false
 end
 
 require 'cucumber'
@@ -80,7 +83,7 @@ end
 
 desc 'Runs all the tests, specs and scenarios.'
 task :test => ['project:ensure_db_exists', 'app:test:prepare'] do
-  tests_to_run = ENV['TEST'] ? ["test:single"] : %w(test:units spec test:functionals features)
+  tests_to_run =  %w(test:units spec test:functionals features)
   run_tests(tests_to_run)
 end
 
