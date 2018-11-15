@@ -38,7 +38,7 @@ Gem::Specification.new do |s|
   s.add_dependency("ancestry", "~> 2.0.0")
   s.add_dependency("underscore-rails", "~> 1.4")
   s.add_dependency("jquery-rails")
-  s.add_dependency("jquery-ui-rails", "~> 4.1")
+  s.add_dependency("jquery-ui-rails")
   s.add_dependency("paperclip")
   s.add_dependency("panoramic")
   s.add_dependency("will_paginate", "~>3.0.0")
