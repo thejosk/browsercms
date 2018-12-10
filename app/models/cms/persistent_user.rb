@@ -25,7 +25,7 @@ module Cms
 
     validates_presence_of :login
     validates_uniqueness_of :login, :case_sensitive => false
-    validates_format_of :login, :with => /\A\w[\w\.\-_@]+\z/, :message => "use only letters, numbers, and .-_@ please."
+    validates_format_of :login, :with => /\A\w[\w\.\-_@]+\z/, :message => "use only letters, numbers, and .-_@ please.", unless: proc { |c| c.is_a? Member }
 
     # Class Methods
     class << self
